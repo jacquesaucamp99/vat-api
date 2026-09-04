@@ -94,7 +94,3 @@ vat-api/
 ├── requirements.txt
 └── .gitignore
 ```
-
-## Notes
-
-This project was prepared as a portfolio-style interview app and is intentionally lightweight for demonstration purposes. It is designed to be easy to understand, extend, and present to a hiring team.
