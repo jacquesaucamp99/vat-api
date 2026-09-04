@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAT Transaction Dashboard</title>
+    <link rel="stylesheet" href="{% static 'transactions/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>VAT Transaction Dashboard</h1>
+            <p>Transaction processing overview</p>
+        </header>
+
+        <section class="summary" aria-label="Transaction totals">
+            <div class="card">
+                <span>Total Transactions</span>
+                <strong>{{ transactions|length }}</strong>
+            </div>
+        </section>
+
+        <section>
+            <h2>Transactions</h2>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Invoice</th>
+                            <th>Date</th>
+                            <th>Country</th>
+                            <th>Currency</th>
+                            <th>Net</th>
+                            <th>VAT</th>
+                            <th>Gross</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for transaction in transactions %}
+                        <tr>
+                            <td>{{ transaction.invoice_number }}</td>
+                            <td>{{ transaction.transaction_date }}</td>
+                            <td>{{ transaction.country }}</td>
+                            <td>{{ transaction.currency }}</td>
+                            <td>{{ transaction.net_amount }}</td>
+                            <td>{{ transaction.vat_amount }}</td>
+                            <td>{{ transaction.gross_amount }}</td>
+                            <td>{{ transaction.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
